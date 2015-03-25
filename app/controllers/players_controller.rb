@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+	before_action :authenticate_user!, :only => [:new, :create]
 	def index
 		@player = Player.order("RANDOM()").first
 		@player2 = Player.order("RANDOM()").first
@@ -9,7 +10,7 @@ class PlayersController < ApplicationController
 	end
 
 	def create
-		Player.create(player_params)
+		current_user.player.create(player_params)
 		redirect_to root_path
 	end
 

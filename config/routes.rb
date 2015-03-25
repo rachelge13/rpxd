@@ -1,4 +1,5 @@
 Rpxd::Application.routes.draw do
+  devise_for :users
   root 'players#index'
   resources :players
   # The priority is based upon order of creation: first created -> highest priority.
