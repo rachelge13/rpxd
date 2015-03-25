@@ -1,1 +1,21 @@
-<h1> ROCK PAPER SCISSORS DYNAMITE </h1>
+<div class = " text-center"> 
+	ROCK PAPER SCISSORS DYNAMITE 
+	<br />
+	Who would win?
+</div>
+<div id = "wrap">
+	<body>
+		<br /><br /><br /> <br />
+		<div class = "container text-center content">
+			<%= @player.name.upcase %> vs. <%= @player2.name.upcase %>
+
+		</div>
+</div>
+
+	</body>
+<br />
+    <div id="footer">
+      <div class="container text-center">
+      <%= link_to 'Submit your own', new_player_path %>
+      </div>
+    </div>
