@@ -10,11 +10,18 @@ class PlayersController < ApplicationController
 	end
 
 	def create
-		current_user.player.create(player_params)
-		redirect_to root_path
+		@player = current_user.players.create(player_params)
+		if @player.valid?
+			redirect_to root_path
+		else
+			render :new, :status => :unprocessable_entity
+		end
 	end
 
 	def player_params
 		params.require(:player).permit(:name)
+	end
+
+	def show
 	end
 end
