@@ -1,4 +1,4 @@
-<div class = " text-center"> 
+<div class = "text-center"> 
 	ROCK PAPER SCISSORS DYNAMITE 
 	<br />
 	Who would win?
@@ -8,6 +8,19 @@
 		<br /><br /><br /> <br />
 		<div class = "container text-center content">
 			<%= @player.name.upcase %> vs. <%= @player2.name.upcase %>
+
+		</div>
+		<div class = "clr"></div>
+		<br /><br /><br /> <br />
+	<div class = "text-center">
+		PROFILES
+		<br />
+		<div class = "pull-left" >
+		<%= link_to "PLAYER 1", player_path(@player) %>
+		</div>
+				<div class = "pull-right" >
+		<%= link_to "PLAYER 2", player_path(@player2) %>
+		</div>
 
 		</div>
 </div>

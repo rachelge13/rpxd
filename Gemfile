@@ -31,6 +31,9 @@ gem 'bootstrap-sass', '~> 3.3.0'
 gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'devise', '>= 3.2.4'
+gem "factory_girl_rails", "~> 4.0"
+gem "acts_as_votable", '~> 0.10.0'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
