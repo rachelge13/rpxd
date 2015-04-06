@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  	test "user profile" do
+  		expected = "The Joker"
+  		actual = player.name.inspect
+  		assert_equal expected, actual
+  	end
 end

@@ -8,7 +8,7 @@
 	<br />
 	<br />
 	<h1> PLAYERS </h1>	
-		<%= current_user.players.each do |player| %>
+		<% current_user.players.each do |player| %>
 			<%= player.name %>
 		<br />
 		<% end %>

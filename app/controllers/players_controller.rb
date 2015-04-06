@@ -1,8 +1,8 @@
 class PlayersController < ApplicationController
 	before_action :authenticate_user!, :only => [:new, :create]
 	def index
-		@player = Player.order("RANDOM()").first
-		@player2 = Player.where.not(:name => @player.name).order("RANDOM()").first
+		@player1 = Player.order("RANDOM()").first
+		@player2 = Player.where.not(:name => @player1.name).order("RANDOM()").first
 	end
 
 	def new
@@ -20,6 +20,17 @@ class PlayersController < ApplicationController
 
 	def show
 		@player = Player.find(params[:id])
+	end
+
+	def upvote
+		@player = Player.find(params[:id])
+  		redirect_to root_path
+	end
+
+	def downvote
+  		@player = Player.find(params[:id])
+  		@player.downvote_from current_user
+  		redirect_to root_path
 	end
 
 	private
