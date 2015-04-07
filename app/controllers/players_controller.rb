@@ -23,12 +23,13 @@ class PlayersController < ApplicationController
 	end
 
 	def upvote
-		@player = Player.find(params[:id])
+		@player = current_player
+		@player.vote_by :user => current_user
   		redirect_to root_path
 	end
 
 	def downvote
-  		@player = Player.find(params[:id])
+  		@player = current_player
   		@player.downvote_from current_user
   		redirect_to root_path
 	end
@@ -38,5 +39,12 @@ class PlayersController < ApplicationController
 	def player_params
 		params.require(:player).permit(:name)
 	end
+
+	helper_method :current_player
+	def current_player
+		@current_player ||= Player.find(params[:player_id])
+	end
+
+
 
 end
