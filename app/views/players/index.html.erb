@@ -7,7 +7,7 @@
 	<body>
 		<br /><br /><br /> <br />
 		<div class = "container text-center content">
-			<%=@player1.name.upcase %> vs. <%= @player2.name.upcase %>
+			<%= link_to @player1.name.upcase, player_Winner_path(@player1), method: :put %> vs. <%= link_to @player2.name.upcase, player_Winner_path(@player2), method: :put %>
 
 		</div>
 		<div class = "clr"></div>
@@ -18,13 +18,11 @@
 		<div class = "pull-left" >
 		<%= link_to "PLAYER 1", player_path(@player1) %>
 		<br />
-		<%= link_to "Vote!", user_player_Winner_path(current_user, @player1), :class => 'btn btn-primary', method: :put %>
 		
 		</div>
 		<div class = "pull-right" >
 		<%= link_to "PLAYER 2", player_path(@player2) %>
 		<br />
-		<%= link_to "Vote!", user_player_Winner_path(current_user, @player2), :class => 'btn btn-primary', method: :put %>
 		</div>
 
 		</div>

@@ -2,12 +2,12 @@ Rpxd::Application.routes.draw do
   devise_for :users
   root 'players#index'
   resources :players
-    resources :users do
+    resources :users
       resources :players do
       put "Winner", to: "players#upvote"
       put "Loser", to: "players#downvote"
   end
-end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

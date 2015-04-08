@@ -23,8 +23,8 @@ class PlayersController < ApplicationController
 	end
 
 	def upvote
-		@player = current_player
-		@player.vote_by :user => current_user
+		@player = Player.find(params[:player_id])
+		(@player.votes_for.size + 1) 
   		redirect_to root_path
 	end
 
@@ -42,7 +42,7 @@ class PlayersController < ApplicationController
 
 	helper_method :current_player
 	def current_player
-		@current_player ||= Player.find(params[:player_id])
+		current_player ||= Player.find(params[:player_id])
 	end
 
 
