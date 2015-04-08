@@ -4,8 +4,7 @@ class PlayersControllerTest < ActionController::TestCase
 	test 'upvote' do 
 		player = Player.create(:name => 'TEST')
 		player.upvote
-	assert_difference 'Players.count' do
-		post :vote
+	assert_equal 1, player.votes.count
 	end
 end
 end

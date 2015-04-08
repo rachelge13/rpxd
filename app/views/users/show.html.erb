@@ -10,6 +10,8 @@
 	<h1> PLAYERS </h1>	
 		<% current_user.players.each do |player| %>
 			<%= player.name %>
+			<%= player.get_upvotes.size %>
+			<%= link_to 'Vote!', player_Winner_path(player), method: :put, :class => 'btn btn-primary' %>
 		<br />
 		<% end %>
 	</div>

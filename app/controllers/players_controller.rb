@@ -24,7 +24,8 @@ class PlayersController < ApplicationController
 
 	def upvote
 		@player = Player.find(params[:player_id])
-		(@player.votes_for.size + 1) 
+		@player.save
+		@player.vote_by voter: current_user, :duplicate => true
   		redirect_to root_path
 	end
 
