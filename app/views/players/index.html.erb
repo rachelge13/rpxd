@@ -1,16 +1,19 @@
-<h1> LIST OF PLAYERS </h1>
+<h1 class = "text-center"> LIST OF PLAYERS </h1>
 <br />
 <br />
 <% @players.each do |player| %>
-<div class = "booyah-box">
-	<h1><%= player.name.upcase %></h1>
+<div class = "booyah-box text-center">
+	<h1 class = "redtext"><%= player.name.upcase %></h1>
 	<%= player.get_upvotes.size %> WINS
-
+	<%if player.user.present? %>
+		<br />
+		<%= link_to player.user.email, user_path(player.user) %>
+		<% end %>
 	<br />
 	<br />
 	</div>
 	<br />
-	<% end %> 
+	<% end %>
 <br />
 <br />
 </h1>

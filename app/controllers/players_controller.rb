@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
 	before_action :authenticate_user!, :only => [:new, :create]
+
 	def index
 		@players = Player.order("name")
 
@@ -23,6 +24,15 @@ class PlayersController < ApplicationController
 		@player2 = Player.where.not(:name => @player1.name).order("RANDOM()").first	
 	end
 
+	def destroy
+		@player = Player.find(params[:player_id])
+		if @player.user != current_user
+		return render :text => 'This is not your player.', :status => :forbidden
+		end
+		@comment.destroy
+		redirect_to user_path(@user)
+	end
+
 	def upvote
 		@player = Player.find(params[:player_id])
 		@player.save
@@ -44,7 +54,7 @@ class PlayersController < ApplicationController
 
 	helper_method :current_player
 	def current_player
-		current_player ||= Player.find(params[:player_id])
+		@current_player ||= Player.find(params[:player_id])
 	end
 
 
