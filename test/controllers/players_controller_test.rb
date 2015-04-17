@@ -9,10 +9,10 @@ class PlayersControllerTest < ActionController::TestCase
 
   	 test "Delete" do
   	 	user = FactoryGirl.create(:user)
-  	 	player = FactoryGirl.create(:player)
-
+  	 	player = FactoryGirl.create(:player, :user => user)
+  	 	sign_in user
   		assert_difference 'Player.count', -1  do
-  		delete :destroy, :player_id => player.id
+  		delete :destroy, :id => player.id
   				
   	 end
   	end

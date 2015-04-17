@@ -3,7 +3,6 @@
 <div class="booyah-box col-xs-8 col-xs-offset-1">
 	<h1> NAME </h1>
 
-	<% if user_signed_in? %>
 		<h1><%= current_user.email %></h1>
 		<br />
 		<h3>Member since: <%= current_user.created_at.strftime("%B %d, %Y") %></h3>
@@ -14,12 +13,15 @@
 			<%= player.name %>
 			<%= player.get_upvotes.size %>
 			<%= link_to 'Vote!', player_Winner_path(player), method: :put, :class => 'btn btn-primary' %>
+			<% if current_user && current_user == player.user %>
+				<%= link_to 'Delete', player_path(player), :method => :delete, :data => {:confirm => 'Are you sure you want to delete this?'} %>
+				<% else %>
+				<%= link_to 'Back', players_path %>
+			<% end %>
 		<br />
 	<% end %>
 
 		<% else %>
-			<%= link_to "You're not signed in!", new_user_session_path %>
-	<% end %>
 	</div>
 	<br />
 	<br />

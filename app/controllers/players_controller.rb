@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-	before_action :authenticate_user!, :only => [:new, :create]
+	before_action :authenticate_user!, :only => [:new, :create, :destroy]
 
 	def index
 		@players = Player.order("name")
@@ -25,12 +25,12 @@ class PlayersController < ApplicationController
 	end
 
 	def destroy
-		@player = Player.find(params[:player_id])
+		@player = current_player
 		if @player.user != current_user
-		return render :text => 'This is not your player.', :status => :forbidden
+		redirect_to :back, :alert => "Nice try, but this isn't your player!"
 		end
-		@comment.destroy
-		redirect_to user_path(@user)
+		@player.destroy
+
 	end
 
 	def upvote
