@@ -3,7 +3,7 @@
 <br />
 <% @players.each do |player| %>
 <div class = "booyah-box text-center">
-	<h1 class = "redtext"><%= player.name.upcase %></h1>
+	<h1 class = "redtext"><%= link_to player.name.upcase, player_path(player) %></h1>
 	<%= player.get_upvotes.size %> WINS
 	<%if player.user.present? %>
 		<br />

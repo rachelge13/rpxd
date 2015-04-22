@@ -6,6 +6,11 @@ class PlayersController < ApplicationController
 
 	end
 
+	def vote
+		@player1 = Player.order("RANDOM()").first
+		@player2 = Player.where.not(:name => @player1.name).order("RANDOM()").first	
+
+	end
 	def new
 		@player = Player.new
 	end
@@ -20,8 +25,7 @@ class PlayersController < ApplicationController
 	end
 
 	def show
-		@player1 = Player.order("RANDOM()").first
-		@player2 = Player.where.not(:name => @player1.name).order("RANDOM()").first	
+		@player = current_player
 	end
 
 	def destroy
@@ -54,7 +58,7 @@ class PlayersController < ApplicationController
 
 	helper_method :current_player
 	def current_player
-		@current_player ||= Player.find(params[:player_id])
+		@current_player ||= Player.find(params[:id])
 	end
 
 

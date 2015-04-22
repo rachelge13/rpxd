@@ -1,0 +1,30 @@
+<div class = "text-center"> 
+	ROCK PAPER SCISSORS DYNAMITE 
+	<br />
+	Who would win?
+</div>
+<div id = "wrap">
+	<body>
+		<br /><br /><br /> <br />
+		<div class = "container text-center content">
+			<%= link_to @player1.name.upcase, player_Winner_path(@player1), method: :put %> vs. <%= link_to @player2.name.upcase, player_Winner_path(@player2), method: :put %>
+
+		</div>
+		<div class = "clr"></div>
+		<br /><br /><br /> <br />
+	<div class = "text-center">
+		<%= link_to 'PROFILES', players_path %>
+		<br />
+		<br />
+		</div>
+
+		</div>
+</div>
+
+	</body>
+<br />
+    <div id="footer">
+      <div class="container text-center">
+      </div>
+    </div>
+<br />

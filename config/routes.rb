@@ -1,6 +1,6 @@
 Rpxd::Application.routes.draw do
   devise_for :users
-  root 'players#show'
+  root 'players#vote'
   resources :players
     resources :users
       resources :players do

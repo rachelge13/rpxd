@@ -33,6 +33,7 @@ gem 'simple_form'
 gem 'devise', '>= 3.2.4'
 gem "factory_girl_rails", "~> 4.0"
 gem "acts_as_votable", '~> 0.10.0'
+gem "ranked-model"
 
 
 group :doc do
