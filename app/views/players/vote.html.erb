@@ -16,9 +16,10 @@
 <div id = "wrap">
 	<body>
 		<br /><br /><br /> <br />
-		<div class = "container text-center content" id = "smash">
+		<div class = "container text-center content">
+		<div id = "smash">
 			<%= link_to @player1.name.upcase, player_Winner_path(@player1), method: :put %> vs. <%= link_to @player2.name.upcase, player_Winner_path(@player2), method: :put %>
-
+		</div>
 		</div>
 
 		<div class = "clr"></div>
