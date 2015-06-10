@@ -4,7 +4,9 @@ class PlayersControllerTest < ActionController::TestCase
 	test 'upvote' do 
 		player = Player.create(:name => 'TEST')
 		player.upvote
+    player.position.move_higher
 	assert_equal 1, player.votes.count
+  assert_equal 16, player.position
 	end
 
   	 test "Delete" do

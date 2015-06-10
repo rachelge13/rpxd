@@ -2,8 +2,8 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   		<script>
-			$( document ).click(function() {
-		    $( "#smash" ).toggle("puff");
+			$( document ).click(function() { 
+		    $( "#toggle" ).toggle("puff");
 			});
 		</script>
 </head>
@@ -17,18 +17,15 @@
 	<body>
 		<br /><br /><br /> <br />
 		<div class = "container text-center content">
-		<div id = "smash">
+		<div id = "toggle">
 			<%= link_to @player1.name.upcase, player_Winner_path(@player1), method: :put %> vs. <%= link_to @player2.name.upcase, player_Winner_path(@player2), method: :put %>
 		</div>
 		</div>
 
 		<div class = "clr"></div>
-		<br /><br /><br /> <br />
-	<div class = "text-center">
-		<%= link_to 'PROFILES', players_path %>
+
 		<br />
 		<br />
-		</div>
 
 		</div>
 </div>

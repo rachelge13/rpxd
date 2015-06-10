@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401193957) do
+ActiveRecord::Schema.define(version: 20150609184440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,21 @@ ActiveRecord::Schema.define(version: 20150401193957) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "position"
   end
 
   add_index "players", ["user_id"], name: "index_players_on_user_id", using: :btree
+
+  create_table "rankings", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ranks", force: true do |t|
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -53,8 +65,10 @@ ActiveRecord::Schema.define(version: 20150401193957) do
     t.integer  "vote_weight"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "row_order"
   end
 
+  add_index "votes", ["row_order"], name: "index_votes_on_row_order", using: :btree
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 

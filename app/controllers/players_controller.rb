@@ -2,7 +2,7 @@ class PlayersController < ApplicationController
 	before_action :authenticate_user!, :only => [:new, :create, :destroy]
 
 	def index
-		@players = Player.order("name")
+		@players = Player.order(:position)
 
 	end
 
@@ -39,7 +39,6 @@ class PlayersController < ApplicationController
 
 	def upvote
 		@player = Player.find(params[:player_id])
-		@player.save
 		@player.vote_by voter: current_user, :duplicate => true
   		redirect_to root_path
 	end
@@ -48,6 +47,12 @@ class PlayersController < ApplicationController
   		@player = current_player
   		@player.downvote_from current_user
   		redirect_to root_path
+	end
+
+	def rank_up
+	end
+
+	def rank_down
 	end
 
 	private

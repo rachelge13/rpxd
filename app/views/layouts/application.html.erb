@@ -10,10 +10,15 @@
 
 <%= yield %>
 
+<br />
+<br />
+<br />
 </body>
     <div id="footer">
       <div class="container text-center">
+
       <%= link_to 'Home', root_path %>&nbsp; &nbsp; &nbsp;
+      <%= link_to 'Player Profiles', players_path %> &nbsp; &nbsp; &nbsp;
       <%= link_to 'Submit your own', new_player_path %>&nbsp; &nbsp; &nbsp;
         <% if notice.present? %>
           <p class="alert alert-info"><%= notice %> </p>
