@@ -34,12 +34,13 @@ class PlayersController < ApplicationController
 		redirect_to :back, :alert => "Nice try, but this isn't your player!"
 		end
 		@player.destroy
-
 	end
 
 	def upvote
 		@player = Player.find(params[:player_id])
+		@player.save
 		@player.vote_by voter: current_user, :duplicate => true
+		@player.position.move_higher
   		redirect_to root_path
 	end
 
@@ -48,17 +49,27 @@ class PlayersController < ApplicationController
   		@player.downvote_from current_user
   		redirect_to root_path
 	end
+	
+	def render_error(code, status_type = nil)
+ 	 	@error = ErrorMessage.new(code, status_type)
+  		respond_to do |format|
+    		format.any(:html, :json) { render @error.partial, status: @error.status }
+    		format.any { head 404, "content_type" => 'text/plain' }
+  		end
+	end
 
 	def rank_up
+		@player.move_higher
 	end
 
 	def rank_down
+		@player.move_lower
 	end
 
 	private
 
 	def player_params
-		params.require(:player).permit(:name)
+		params.require(:player).permit(:name, :position)
 	end
 
 	helper_method :current_player

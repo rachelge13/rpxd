@@ -1,11 +1,12 @@
 require 'test_helper'
 
 class PlayerTest < ActiveSupport::TestCase
-	test 'upvote' do 
-		player = Player.create(:name => 'TEST', :position => 15)
+
+	test "Upvote" do 
 		user = FactoryGirl.create(:user)
+		player = Player.create(:name => 'TEST')
 		assert_difference 'player.get_upvotes.size' do
-			player.upvote(user)
+			player.upvote
 		end
 	end
 
