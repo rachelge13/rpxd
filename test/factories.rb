@@ -1,7 +1,6 @@
 FactoryGirl.define 	do
 	factory :player do
 		name "Chuck Norris"
-		position "1"
 	end
 
 	factory :user do

@@ -6,7 +6,7 @@ class PlayerTest < ActiveSupport::TestCase
 		user = FactoryGirl.create(:user)
 		player = Player.create(:name => 'TEST')
 		assert_difference 'player.get_upvotes.size' do
-			player.upvote
+			player.upvote(user)
 		end
 	end
 
